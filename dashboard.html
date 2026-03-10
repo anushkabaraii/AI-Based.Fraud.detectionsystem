@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Fraud Detection Dashboard</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+<h2>Fraud Detection Dashboard</h2>
+<div>
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+</div>
+</nav>
+
+
+<div class="container">
+
+<h1>AI Fraud Monitoring Dashboard</h1>
+
+<div class="stats">
+
+<div class="card">
+<h3>Total Transactions</h3>
+<p>{{ total }}</p>
+</div>
+
+<div class="card">
+<h3>Fraud Transactions</h3>
+<p>{{ fraud_count }}</p>
+</div>
+
+<div class="card">
+<h3>Normal Transactions</h3>
+<p>{{ normal_count }}</p>
+</div>
+
+<div class="card">
+<h3>Model Accuracy</h3>
+<p>{{ accuracy }}%</p>
+</div>
+
+</div>
+
+
+<div class="charts">
+
+<div class="card chart-card">
+
+<h3>Fraud vs Normal Transactions</h3>
+
+<canvas id="fraudChart"></canvas>
+
+</div>
+
+
+<div class="card table-card">
+
+<h3>Recent Transactions</h3>
+
+<table>
+
+<tr>
+<th>Amount</th>
+<th>Time</th>
+<th>Status</th>
+</tr>
+
+{% for t in transactions %}
+
+<tr>
+
+<td>{{ t.Amount }}</td>
+<td>{{ t.Time }}</td>
+
+{% if t.Class == 1 %}
+<td class="fraud">Fraud</td>
+{% else %}
+<td class="safe">Normal</td>
+{% endif %}
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+const ctx = document.getElementById('fraudChart');
+
+new Chart(ctx,{
+type:'pie',
+data:{
+labels:['Fraud','Normal'],
+datasets:[{
+data:[{{ fraud_count }},{{ normal_count }}],
+backgroundColor:['#1e40af','#ef4444']
+}]
+}
+});
+
+</script>
+
+<footer>
+<p>Fraud Detection System</p>
+<p>Developed by Anushka Barai | CS24D004</p>
+</footer>
+
+</body>
+</html>

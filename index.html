@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Fraud Detection System</title>
+
+<link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<header class="header">
+<h1 class="main-title">AI-Based Fraud Detection System</h1>
+</header>
+
+
+<div class="container">
+
+<div class="transaction-card">
+
+<h2>Check Transaction</h2>
+
+<form action="/predict" method="post" class="transaction-form">
+
+<input type="number" name="amount" placeholder="Enter Transaction Amount" required>
+
+<button type="submit">Check Fraud</button>
+
+</form>
+
+</div>
+
+</div>
+
+<footer>
+<p>Fraud Detection System</p>
+<p>Developed by Anushka Barai | CS24D004</p>
+</footer>
+
+</body>
+</html>
