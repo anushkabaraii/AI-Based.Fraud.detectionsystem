@@ -24,6 +24,15 @@
 <div class="container">
 
 <h1>AI Fraud Monitoring Dashboard</h1>
+{% if result %}
+<div style="text-align:center; margin:15px 0;">
+
+<h2>{{ result }}</h2>
+
+<p><b>Reason:</b> {{ reason }}</p>
+
+</div>
+{% endif %}
 
 <div class="stats">
 
